@@ -56,13 +56,14 @@ export default function Avatar({ phase, setPhase }: Props) {
         )}
       </AnimatePresence>
 
-      {/* greeting bubble */}
-      <AnimatePresence>
-        {phase === "greeting" && (
-          <Greeting key="greeting" onDone={() => setPhase("done")} />
-        )}
-      </AnimatePresence>
-
+      
+      <div className="absolute inset-x-0 bottom-full mb-2 flex justify-center">
+        <AnimatePresence>
+          {phase === "greeting" && (
+            <Greeting key="greeting" onDone={() => setPhase("done")} />
+          )}
+        </AnimatePresence>
+      </div>
       {/* avatar */}
       <motion.div
         initial={{ y: "100%", filter: "brightness(0.2)" }}

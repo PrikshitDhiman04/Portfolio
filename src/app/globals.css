@@ -1,2 +1,42 @@
 @import "tailwindcss";
 
+/* shared sizes: phones first */
+:root {
+  --bar-h: 7vh;
+  --wire: 90px;
+  --bulb-w: 112px;
+  --avatar-h: 26vh;
+  --avatar-right: 10vw;
+}
+
+/* small tablets and up */
+@media (min-width: 640px) {
+  :root {
+    --bar-h: 8vh;
+    --wire: 140px;
+    --bulb-w: 144px;
+    --avatar-h: 30vh;
+    --avatar-right: 12vw;
+  }
+}
+
+/* laptops and large tablets */
+@media (min-width: 1024px) {
+  :root {
+    --wire: 190px;
+    --bulb-w: 180px;
+    --avatar-h: 34vh;
+    --avatar-right: 14vw;
+  }
+}
+
+/* phones held sideways: very little height */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --bar-h: 12vh;
+    --wire: 50px;
+    --bulb-w: 80px;
+    --avatar-h: 36vh;
+    --avatar-right: 14vw;
+  }
+}

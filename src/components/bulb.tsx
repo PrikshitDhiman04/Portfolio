@@ -1,11 +1,13 @@
 "use client";
 import type { Dispatch, SetStateAction } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   FLICKER,
   FLICKER_TRANSITION,
   type Phase,
 } from "@/components/lightPhase";
+import { playSound, unlockSound } from "@/lib/sounds";
+
 
 type Props = {
   phase: Phase;
@@ -19,6 +21,8 @@ const SWING = Array.from({ length: 80 }, (_, i) => {
 export default function Bulb({ phase, setPhase }: Props) {
   const handleClick = () => {
     if (phase !== "waiting") return;
+    playSound("bulb");
+    
     setPhase("flickering");
   };
 
@@ -49,29 +53,30 @@ export default function Bulb({ phase, setPhase }: Props) {
           viewBox="100 187 180 258"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={`w-45 -mt-px overflow-visible ${
-            phase === "waiting" ? "cursor-pointer" : ""
+          className={`w-(--bulb-w) -mt-px origin-top overflow-visible transition-all duration-300 ${
+            phase === "waiting"
+              ? "cursor-pointer hover:scale-105 hover:filter-[drop-shadow(0_0_14px_rgba(255,190,90,0.55))]"
+              : ""
           }`}
         >
+          <AnimatePresence>
+            {phase === "waiting" && (
+              <motion.p
+                key="hint"
+                className="mt-3 text-[11px] uppercase tracking-[0.3em] text-[#ffd27a]/70 sm:text-xs"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { delay: 1, duration: 0.8 },
+                }}
+                exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              >
+                <span className="animate-pulse">switch me on</span>
+              </motion.p>
+            )}
+          </AnimatePresence>
+
           <g id="Frame">
-            {/* <path
-            id="Cord / Left"
-            opacity="0.52"
-            d="M187 0.799988V190.8"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            stroke="#7B818D"
-          /> */}
-            {/* <path
-            id="Cord / Right"
-            opacity="0.52"
-            d="M193 0.799988V190.8"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            stroke="#B4BAC5"
-          /> */}
             <path
               id="Socket / Strain relief"
               opacity="0.55"
@@ -193,14 +198,6 @@ export default function Bulb({ phase, setPhase }: Props) {
                 strokeLinejoin="round"
               />
             </motion.g>
-            {/* <path
-            id="Cord / Top cap"
-            d="M187 0.799988H193"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            stroke="#A5ADB9"
-          /> */}
 
             <path
               id="Cord / Top cap"
