@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
 
 /* shared sizes: phones first */
 :root {
