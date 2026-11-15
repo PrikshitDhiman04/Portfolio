@@ -2,30 +2,39 @@
 import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 import { useStage } from "@/components/StageContext";
+import { FileText, FolderGit2, Send, type LucideIcon } from "lucide-react";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const CARDS = [
+const CARDS: {
+  tag: string;
+  title: string;
+  desc: string;
+  href: string;
+  icon: LucideIcon;
+}[] = [
   {
     tag: "01",
     title: "Projects",
     desc: "Things I've built and shipped.",
     href: "/projects",
+    icon: FolderGit2,
   },
   {
     tag: "02",
     title: "Resume",
     desc: "The one-page version of me.",
     href: "/resume.pdf",
+    icon: FileText,
   },
   {
     tag: "03",
-    title: "DSA",
-    desc: "Problems solved, patterns learned.",
-    href: "/dsa",
+    title: "Connect",
+    desc: "Say hello, or let's build something.",
+    href: "/connect",
+    icon: Send,
   },
 ];
-
 const list: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
@@ -89,10 +98,15 @@ export default function Hero() {
                 href={c.href}
                 className="group block h-full rounded-2xl border border-white/10 bg-white/3 p-6 transition-colors hover:border-white/25 hover:bg-white/6"
               >
-                <span className="font-mono text-xs text-white/40">{c.tag}</span>
+                <div className="flex items-start justify-between">
+                  <span className="grid size-10 place-items-center rounded-xl border border-border bg-background text-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                    <c.icon className="size-5" strokeWidth={1.75} />
+                  </span>
+                  <span className="font-mono text-xs text-muted">{c.tag}</span>
+                </div>
                 <h2 className="mt-8 text-xl font-medium">{c.title}</h2>
-                <p className="mt-1 text-sm text-white/60">{c.desc}</p>
-                <span className="mt-6 inline-block text-sm text-[#ffd27a] transition-transform group-hover:translate-x-1">
+                <p className="mt-1 text-sm text-muted">{c.desc}</p>
+                <span className="mt-6 inline-block text-sm text-accent transition-transform group-hover:translate-x-1">
                   Open →
                 </span>
               </Link>
