@@ -10,7 +10,7 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const LINKS = [
   { label: "Projects", href: "/projects" },
-  { label: "Resume", href: "/resume.pdf" },
+  { label: "Resume", href: "/resume" },
   { label: "Connect", href: "/connect" },
 ];
 
@@ -44,11 +44,11 @@ export default function Navbar() {
     <motion.header
       inert={!shown}
       className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/70 backdrop-blur-md"
-      initial={{ y: -64, opacity: 0 }}
-      animate={shown ? { y: 0, opacity: 1 } : { y: -64, opacity: 0 }}
+      initial={{ y: -72, opacity: 0 }}
+      animate={shown ? { y: 0, opacity: 1 } : { y: -72, opacity: 0 }}
       transition={{ duration: 0.7, ease: EASE }}
     >
-      <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
+      <nav className="flex h-16 items-center justify-between px-4 sm:px-8 lg:px-12">
         <Link href="/" className="font-semibold tracking-tight">
           Prikshit
         </Link>
@@ -67,7 +67,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* bulb = theme toggle */}
           <button
             type="button"
             aria-label="Toggle light and dark theme"
@@ -79,21 +78,24 @@ export default function Navbar() {
             <BulbIcon />
           </button>
 
-          {/* avatar = about */}
           <HoverCard.Root openDelay={120} closeDelay={80}>
             <HoverCard.Trigger asChild>
               <Link
                 href="/about"
-                aria-label="About me"
-                className="block size-9 overflow-hidden rounded-full border border-border bg-card transition-transform hover:scale-105"
+                className="group flex flex-col items-center gap-0.5 rounded-lg px-1 py-1"
               >
-                <Image
-                  src="/avatar.svg"
-                  alt=""
-                  width={72}
-                  height={72}
-                  className="size-full object-cover object-top"
-                />
+                <span className="block size-9 overflow-hidden rounded-full border border-border bg-card transition-transform group-hover:scale-105">
+                  <Image
+                    src="/avatar.svg"
+                    alt=""
+                    width={72}
+                    height={72}
+                    className="size-full object-cover object-top"
+                  />
+                </span>
+                <span className="text-[10px] font-medium uppercase leading-none tracking-wider text-muted transition-colors group-hover:text-foreground">
+                  About
+                </span>
               </Link>
             </HoverCard.Trigger>
             <HoverCard.Portal>

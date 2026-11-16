@@ -24,7 +24,7 @@ const CARDS: {
     tag: "02",
     title: "Resume",
     desc: "The one-page version of me.",
-    href: "/resume.pdf",
+    href: "/resume",
     icon: FileText,
   },
   {
@@ -96,10 +96,10 @@ export default function Hero() {
             <motion.li key={c.title} variants={item}>
               <Link
                 href={c.href}
-                className="group block h-full rounded-2xl border border-white/10 bg-white/3 p-6 transition-colors hover:border-white/25 hover:bg-white/6"
+                className="group block h-full rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-card-hover"
               >
                 <div className="flex items-start justify-between">
-                  <span className="grid size-10 place-items-center rounded-xl border border-border bg-background text-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                  <span className="grid size-10 place-items-center rounded-xl border border-border bg-accent/10 text-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
                     <c.icon className="size-5" strokeWidth={1.75} />
                   </span>
                   <span className="font-mono text-xs text-muted">{c.tag}</span>
