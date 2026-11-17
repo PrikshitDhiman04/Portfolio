@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { useStage } from "@/components/StageContext";
+import SignatureName from "./SignatureNames";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -44,13 +45,13 @@ export default function Navbar() {
     <motion.header
       inert={!shown}
       className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/70 backdrop-blur-md"
-      initial={{ y: -72, opacity: 0 }}
-      animate={shown ? { y: 0, opacity: 1 } : { y: -72, opacity: 0 }}
+      initial={{ y: "-100%", opacity: 0 }}
+      animate={shown ? { y: 0, opacity: 1 } : { y: "-100%", opacity: 0 }}
       transition={{ duration: 0.7, ease: EASE }}
     >
-      <nav className="flex h-16 items-center justify-between px-4 sm:px-8 lg:px-12">
-        <Link href="/" className="font-semibold tracking-tight">
-          Prikshit
+      <nav className="flex h-16 items-center justify-between px-4 sm:h-20 sm:px-8 lg:px-12">
+        <Link href="/" aria-label="Prikshit Dhiman, home" className="block">
+          <SignatureName play={shown} />
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-2">
