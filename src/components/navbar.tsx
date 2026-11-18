@@ -79,7 +79,7 @@ export default function Navbar() {
             <BulbIcon />
           </button>
 
-          <HoverCard.Root openDelay={120} closeDelay={80}>
+          <HoverCard.Root openDelay={120} closeDelay={250}>
             <HoverCard.Trigger asChild>
               <Link
                 href="/about"
@@ -111,7 +111,12 @@ export default function Navbar() {
                   Software engineer. I build full-stack web apps with React,
                   Node and MongoDB, and I care about tests and speed.
                 </p>
-                <p className="mt-3 text-sm text-accent">Read more →</p>
+                <Link
+                  href="/about"
+                  className="mt-3 inline-block text-sm text-accent hover:underline"
+                >
+                  Read more →
+                </Link>
               </HoverCard.Content>
             </HoverCard.Portal>
           </HoverCard.Root>

@@ -1,9 +1,10 @@
 "use client";
 import type { IconType } from "react-icons";
 import { motion, type Variants } from "motion/react";
-import { FaCss3Alt, FaHtml5 } from "react-icons/fa";
+import { FaCss3Alt, FaHtml5, FaJava } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
 import {
+  SiC,
   SiCplusplus,
   SiExpress,
   SiFigma,
@@ -15,6 +16,7 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiPostman,
+  SiPython,
   SiReact,
   SiSqlite,
   SiTailwindcss,
@@ -31,7 +33,10 @@ const GROUPS: { title: string; items: Tech[] }[] = [
     items: [
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "Python", icon: SiPython, color: "#3776AB" },
+      { name: "C", icon: SiC, color: "#A8B9CC" },
       { name: "C++", icon: SiCplusplus, color: "#00599C" },
+      { name: "Java", icon: FaJava, color: "#ED8B00" },
       { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
       { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
     ],

@@ -76,7 +76,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mt-3 font-mono text-sm text-white/50"
+          className="mt-3 font-mono text-sm text-foreground/80"
           initial={{ opacity: 0 }}
           animate={{ opacity: shown ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
